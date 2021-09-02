@@ -1,0 +1,50 @@
+.sign_out_btn {
+  border-radius: 20px;
+    border: 1px solid #ff4b2b;
+    background-color: #ff4b2b;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+  position: fixed;
+  right: 30px;
+  bottom: 5rem;
+}
+
+.home_container {
+  height: 100vh;
+  width: 100vw;
+  background: black;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+}
+
+.upload_btn {
+  position: fixed;
+  right: 20px;
+  bottom: 10rem;
+  width: 6rem;
+}
+
+#profile {
+  position: fixed;
+  bottom: 14rem;
+  right: 2rem;
+  height: 4rem;
+  width: 4rem;
+  border-radius: 50%;
+  border: none;
+}
+
+#profile img {
+  display: block;
+  height: 4rem;
+  width: 4rem;
+  border-radius: 50%;
+  position: fixed;
+  right: 2rem;
+  bottom: 14rem;
+}

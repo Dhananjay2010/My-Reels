@@ -1,0 +1,35 @@
+
+.image-profile {
+    display: block;
+    margin: auto;
+    height: 15rem;
+    width: 15rem;
+  }
+  
+  
+  .username-profile{
+      text-align: center;
+      font-size: 3rem;
+      font-weight: 100;
+  }
+  
+  .ttpost{
+      text-align: center;
+      font-size: 2rem;
+  }
+
+  .home_btn{
+    border-radius: 20px;
+    border: 1px solid #ff4b2b;
+    background-color: #ff4b2b;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+    position: absolute;
+    bottom: 5rem;
+    right: 2rem;
+  }

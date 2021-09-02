@@ -1,0 +1,155 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.video_container {
+  height: 100%;
+  width: 30%;
+  margin: auto;
+  position: relative;
+  scroll-snap-align: start;
+}
+
+.video_container video {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.comment {
+  position: absolute;
+  right: 1rem;
+  bottom: 17rem;
+  color: white;
+  font-size: 40px;
+}
+
+.like {
+    position: absolute;
+    right: 1rem;
+    bottom: 23rem;
+    color: white;
+    font-size: 40px;
+  }
+
+.comment_box {
+  position: absolute;
+  bottom: 0px;
+  height: 35%;
+  width: 100%;
+  background: transparent;
+  z-index: 2;
+}
+
+.comment_box_btn {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  border: none;
+  border-radius: 5px;
+}
+
+.all_comments {
+  position: absolute;
+  height: 75%;
+  border: 1px solid black;
+  width: 100%;
+  top: 18px;
+  overflow: auto;
+  border: none;
+  
+}
+
+.all_comments::-webkit-scrollbar {
+  display: none;
+}
+
+.post_comment_ipt {
+  position: absolute;
+  bottom: 0px;
+  height: 55px;
+  width: 80%;
+  font-size: 16px;
+  height: 47px;
+  border-radius: 44px;
+  border-radius: 43px;
+    border: none;
+    outline: none;
+  background: transparent;
+  color: white;
+  border: 1px solid white;
+}
+
+.post_comment_btn {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  height: 19%;
+  width: 20%;
+  font-size: 20px;
+  border-radius: 18px;
+  border: none;
+  background: transparent;
+  color: white;
+  border: 1px solid white;
+}
+
+.username {
+  position: absolute;
+  left: 15px;
+  bottom: 17rem;
+  color: white;
+  font-size: 20px;
+}
+
+.song {
+  position: absolute;
+  left: 5px;
+  bottom: 16rem;
+  color: white;
+  font-size: 20px;
+  display: flex;
+}
+
+img {
+  display: block;
+  height: 3rem;
+  width: 3rem;
+  border-radius: 50%;
+}
+
+.single_comment {
+  display: flex;
+  padding: 4px;
+  color: white;
+}
+
+.all-comments > div > div {
+  margin-left: 10px;
+}
+
+.inner-comment {
+  margin-top: -1rem;
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.likes_quantity{
+  
+  position: absolute;
+  right: 30px;
+  bottom: 20rem;
+  font-size: 25px;
+  color: white;
+
+}
+
+
