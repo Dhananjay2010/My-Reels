@@ -4,7 +4,7 @@ import { firestore } from "../firebase";
 import { AuthContext } from "./authProvider";
 
 let VideoCard = (props) => {
-  let [playing, setPlaying] = useState(false);
+  let [playing, setPlaying] = useState(true);
   let [openCommentBox, setOpenCommentBox] = useState(false);
   let [currentComment, setCurrentComment] = useState("");
   let [allComments, setAllComments] = useState([]);
@@ -27,6 +27,7 @@ let VideoCard = (props) => {
   //   setAllComments(arr);
   //   console.log(allComments);
   // }, [props]);
+
 
   useEffect(() => {
     let f = async () => {
@@ -57,8 +58,10 @@ let VideoCard = (props) => {
   return (
     <div className="video_container">
       <video
+      // className="video_observe"
         loop
         src={props.post.downloadURL}
+        muted="muted"
         onClick={(e) => {
           if (playing) {
             e.target.pause();
@@ -81,21 +84,32 @@ let VideoCard = (props) => {
       >
         chat_bubble_outline
       </span>
-      <p className="likes_quantity">{props.post.likes}</p>
+      <p className="likes_quantity">{props.post.liked.length}</p>
 
-      {liked ? (
+      {props.post.liked.includes(email.split("@")[0]) ? (
         <span
           class="material-icons like"
           onClick={() => {
             setLiked(false);
-            if (props.post.like == 0) {
-              return;
-            }
-            let likes = props.post.likes - 1;
-            firestore
+            // if (props.post.like == 0) {
+            //   return;
+            // }
+            // let likes = props.post.likes - 1;
+            // firestore
+            //   .collection("posts")
+            //   .doc(props.post.id)
+            //   .update({ likes: likes });
+
+              let arr=props.post.liked.filter((e)=>{
+                return e!=email.split("@")[0];
+              })
+              // if(props.post.liked.includes(email.split("@")[0])){
+                
+              // }
+              firestore
               .collection("posts")
               .doc(props.post.id)
-              .update({ likes: likes });
+              .update({ liked: arr });
           }}
         >
           favorite
@@ -105,11 +119,21 @@ let VideoCard = (props) => {
           class="material-icons like"
           onClick={() => {
             setLiked(true);
-            let likes = props.post.likes + 1;
+            // let likes = props.post.likes + 1;
+            // firestore
+            //   .collection("posts")
+            //   .doc(props.post.id)
+            //   .update({ likes: likes });
+
+              if(props.post.liked.includes(email.split("@")[0])){
+                return
+              }
+
+            let arr=[...props.post.liked, email.split("@")[0]];
             firestore
               .collection("posts")
               .doc(props.post.id)
-              .update({ likes: likes });
+              .update({ liked: arr });
           }}
         >
           favorite_border

@@ -7,9 +7,49 @@ import VideoCard from "./videoCard";
 let Home = () => {
   let user = useContext(AuthContext);
   let [posts, setPosts] = useState([]);
+  let [observe, setObserve]=useState(false);
 
+  function callback(entries) {
+    console.log(entries);
+    entries.forEach((entry) => {
+        let child = entry.target.children[0];
+        console.log(child)
+        // play -> async work 
+        // pause -> sync work
+        // if (entry.isIntersecting) {
+        //     console.log(child.id)
+        // } else {
+        //     console.log(child.id)
+
+        // }
+        
+        child.play().then(function(){
+          if (entry.isIntersecting == false) {
+            child.pause();
+        }  
+        }).then((error)=>{
+          console.log(error);
+        })
+    })
+}
+
+  useEffect(()=>{
+
+    let conditionObject={
+      root : null,
+      threshold : "0.9",
+    }
+
+    let observer= new IntersectionObserver(callback, conditionObject);
+    let elements=document.querySelectorAll(".video_container");
+    console.log(elements);
+    elements.forEach((el) => {
+      observer.observe(el);
+  })
+  }, [observe])
+  
   useEffect(() => {
-    let unsub = firestore.collection("posts").onSnapshot((querySnapshot) => {
+    let unsub = firestore.collection("posts").orderBy("createdAt", "desc").onSnapshot((querySnapshot) => {
       setPosts(
         // ==
         querySnapshot.docs.map((doc) => {
@@ -23,14 +63,19 @@ let Home = () => {
     return () => {
       unsub();
     };
-  }, []);
+  },[]);
+
+  setTimeout(()=>{ // For making the intersection observer use effect work . usko starting mai mil he nhi raha tha elements
+    setObserve(true);
+  }, 2500)
+
   return (
     <>
       {user ? (
         <div className="home_container">
           {posts.map((post, i) => {
             console.log(post);
-            return <VideoCard post={post} key={i} />;
+            return <VideoCard  post={post} key={i} />
           })}
 
           <button
@@ -117,7 +162,8 @@ let Home = () => {
                   ? user.displayName
                   : user.email.split("@")[0],
                 comments: [],
-                likes: 0,
+                liked :[],
+                createdAt: Date.now(),
               });
             });
           };
