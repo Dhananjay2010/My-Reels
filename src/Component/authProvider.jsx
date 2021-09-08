@@ -2,7 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import { auth, firestore } from "../firebase"; 
 
 export const AuthContext=createContext();
-let AuthProvider=({children})=>{ // Har component ko children milte hain using the children. Yahan pe destructuring se nikala
+let AuthProvider=({children})=>{ 
 
     let [loading, setLoading] = useState(true);
     let [currentUser, setCurrentUser] = useState(null);

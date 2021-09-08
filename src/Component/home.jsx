@@ -46,7 +46,7 @@ let Home = () => {
     elements.forEach((el) => {
       observer.observe(el);
   })
-  }, [observe])
+  })
   
   useEffect(() => {
     let unsub = firestore.collection("posts").orderBy("createdAt", "desc").onSnapshot((querySnapshot) => {

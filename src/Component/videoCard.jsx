@@ -10,24 +10,6 @@ let VideoCard = (props) => {
   let [allComments, setAllComments] = useState([]);
   let [liked, setLiked] = useState(false);
 
-  // useEffect(() => {
-  //   let allcommentsId = props.post.comments;
-  //   let arr = [];
-  //   for (let i = 0; i < allcommentsId.length; i++) {
-  //     let id = allcommentsId[i];
-
-  //     let docRef = firestore.collection("comment").doc(id);
-  //     console.log(typeof(docRef.get()));
-  //     docRef.get().then((doc) => {
-  //       let commentData = { ...doc.data(), id: doc.id }; // Har bar id nikali hai kabhi bhi kaam aa sakti hai
-  //       arr.push(commentData);
-  //     });
-  //   }
-
-  //   setAllComments(arr);
-  //   console.log(allComments);
-  // }, [props]);
-
 
   useEffect(() => {
     let f = async () => {
